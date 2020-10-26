@@ -11,3 +11,6 @@ One of the upcoming feature will be configurable creeper damage(none, or percent
 
 # Installation
 To install the plugin you need spigot server. No other plugins required. Just drop the file CreeperConfetti.jar to plugins folder. Restart the server and enjoy!
+
+# Why if I can do just "/gamerule mobGriefing false"?
+It also disables other things like villager food farms so it's just safer for server. Also really lightweight.
