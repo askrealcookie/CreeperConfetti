@@ -1,5 +1,6 @@
 # CreeperConfetti
 Creeper Confetti is a plugin for Minecraft servers that replaces all creeper explosions with nice-looking confetti ones.
+https://www.spigotmc.org/resources/creeperconfetti.85204/
 
 ![Explosion gif](https://imgur.com/AoU7oSn.gif)
 
