@@ -11,9 +11,14 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
+import io.netty.util.internal.ThreadLocalRandom;
+
 public class CreeperExplodeListener implements Listener {
     @EventHandler
     public void onCreeperExplode(EntityExplodeEvent e){
+    	double random = ThreadLocalRandom.current().nextDouble() * 100;
+    	// if random not less than confetti_chance, stop
+    	if (random >= CreeperConfetti.getInstance().getConfig().getDouble("confetti_chance")) return;
         if(e.getEntityType().equals(EntityType.CREEPER)){
             e.setCancelled(true);
             Creeper c = (Creeper)e.getEntity();
