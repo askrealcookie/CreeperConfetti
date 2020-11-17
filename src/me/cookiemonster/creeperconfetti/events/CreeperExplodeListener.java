@@ -1,6 +1,9 @@
 package me.cookiemonster.creeperconfetti.events;
 
 import me.cookiemonster.creeperconfetti.CreeperConfetti;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.bukkit.*;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
@@ -10,8 +13,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
-
-import io.netty.util.internal.ThreadLocalRandom;
 
 public class CreeperExplodeListener implements Listener {
     @EventHandler
