@@ -9,6 +9,7 @@ public class CreeperConfetti extends JavaPlugin {
 
     @Override
     public void onEnable() {
+    	saveDefaultConfig();
         instance = this;
         getServer().getPluginManager().registerEvents(new CreeperExplodeListener(), this);
         MetricsLite metrics = new MetricsLite(this, 9232);

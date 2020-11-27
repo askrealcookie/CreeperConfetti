@@ -1,6 +1,9 @@
 package me.cookiemonster.creeperconfetti.events;
 
 import me.cookiemonster.creeperconfetti.CreeperConfetti;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.bukkit.*;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
@@ -14,6 +17,9 @@ import org.bukkit.util.Vector;
 public class CreeperExplodeListener implements Listener {
     @EventHandler
     public void onCreeperExplode(EntityExplodeEvent e){
+    	double random = ThreadLocalRandom.current().nextDouble() * 100;
+    	// if random not less than confetti_chance, stop
+    	if (random >= CreeperConfetti.getInstance().getConfig().getDouble("confetti_chance")) return;
         if(e.getEntityType().equals(EntityType.CREEPER)){
             e.setCancelled(true);
             Creeper c = (Creeper)e.getEntity();
