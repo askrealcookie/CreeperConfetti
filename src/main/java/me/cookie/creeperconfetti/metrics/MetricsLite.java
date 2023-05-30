@@ -1,4 +1,4 @@
-package me.cookiemonster.creeperconfetti.metrics;
+package me.cookie.creeperconfetti.metrics;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

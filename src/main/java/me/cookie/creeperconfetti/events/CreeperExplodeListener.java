@@ -1,6 +1,6 @@
-package me.cookiemonster.creeperconfetti.events;
+package me.cookie.creeperconfetti.events;
 
-import me.cookiemonster.creeperconfetti.CreeperConfetti;
+import me.cookie.creeperconfetti.CreeperConfetti;
 
 import java.util.concurrent.ThreadLocalRandom;
 

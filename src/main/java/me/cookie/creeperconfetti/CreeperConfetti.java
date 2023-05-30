@@ -1,7 +1,7 @@
-package me.cookiemonster.creeperconfetti;
+package me.cookie.creeperconfetti;
 
-import me.cookiemonster.creeperconfetti.events.CreeperExplodeListener;
-import me.cookiemonster.creeperconfetti.metrics.MetricsLite;
+import me.cookie.creeperconfetti.events.CreeperExplodeListener;
+import me.cookie.creeperconfetti.metrics.MetricsLite;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CreeperConfetti extends JavaPlugin {
