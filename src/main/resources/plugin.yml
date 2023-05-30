@@ -1,5 +1,5 @@
 main: me.cookie.creeperconfetti.CreeperConfetti
 name: CreeperConfetti
 author: Cookie
-version: '${project.version}'
+version: 1.4
 api-version: 1.13
