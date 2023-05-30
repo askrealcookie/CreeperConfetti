@@ -1,2 +1,20 @@
 # Percent chance that the creeper will be a confetti creeper
 confetti_chance: 100
+
+confetti_effect:
+  - ==: Firework
+    flicker: true
+    trail: false
+    colors:
+      - ==: Color
+        ALPHA: 255
+        RED: 255
+        BLUE: 0
+        GREEN: 0
+      - ==: Color
+        ALPHA: 255
+        RED: 255
+        BLUE: 0
+        GREEN: 255
+    fade-colors: []
+    type: BALL

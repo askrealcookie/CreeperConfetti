@@ -2,6 +2,7 @@ package me.cookie.creeperconfetti.events;
 
 import me.cookie.creeperconfetti.CreeperConfetti;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.bukkit.*;
@@ -31,14 +32,15 @@ public class CreeperExplodeListener implements Listener {
             location = location.add(new Vector(0, 1, 0));
 
             Firework firework = (Firework)creeper.getWorld().spawnEntity(location, EntityType.FIREWORK);
+
             FireworkMeta fireworkMeta = firework.getFireworkMeta();
+            fireworkMeta.addEffects((List<FireworkEffect>) CreeperConfetti.getInstance().getConfig().get("confetti_effect"));
             fireworkMeta.setPower(0);
-            fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.RED, Color.YELLOW).flicker(true).build());
             firework.setFireworkMeta(fireworkMeta);
 
             location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2, 1);
 
-            Bukkit.getScheduler().scheduleSyncDelayedTask(CreeperConfetti.getInstance(), () -> firework.detonate(), 1);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(CreeperConfetti.getInstance(), firework::detonate, 1);
         }
     }
 }
