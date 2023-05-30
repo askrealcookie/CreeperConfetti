@@ -16,27 +16,29 @@ import org.bukkit.util.Vector;
 
 public class CreeperExplodeListener implements Listener {
     @EventHandler
-    public void onCreeperExplode(EntityExplodeEvent e){
+    public void onCreeperExplode(EntityExplodeEvent event){
     	double random = ThreadLocalRandom.current().nextDouble() * 100;
+
     	// if random not less than confetti_chance, stop
-    	if (random >= CreeperConfetti.getInstance().getConfig().getDouble("confetti_chance")) return;
-        if(e.getEntityType().equals(EntityType.CREEPER)){
-            e.setCancelled(true);
-            Creeper c = (Creeper)e.getEntity();
-            Location loc = c.getLocation();
-            loc = loc.add(new Vector(0, 1, 0));
-            Firework fw = (Firework)c.getWorld().spawnEntity(loc, EntityType.FIREWORK);
-            FireworkMeta fwm = fw.getFireworkMeta();
-            fwm.setPower(0);
-            fwm.addEffect(FireworkEffect.builder().withColor(Color.RED, Color.YELLOW).flicker(true).build());
-            fw.setFireworkMeta(fwm);
-            loc.getWorld().playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2, 1);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(CreeperConfetti.getInstance(), new Runnable() {
-                @Override
-                public void run() {
-                    fw.detonate();
-                }
-            }, 1);
+    	if (random >= CreeperConfetti.getInstance().getConfig().getDouble("confetti_chance"))
+            return;
+
+        if(event.getEntityType().equals(EntityType.CREEPER)){
+            event.setCancelled(true);
+
+            Creeper creeper = (Creeper)event.getEntity();
+            Location location = creeper.getLocation();
+            location = location.add(new Vector(0, 1, 0));
+
+            Firework firework = (Firework)creeper.getWorld().spawnEntity(location, EntityType.FIREWORK);
+            FireworkMeta fireworkMeta = firework.getFireworkMeta();
+            fireworkMeta.setPower(0);
+            fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.RED, Color.YELLOW).flicker(true).build());
+            firework.setFireworkMeta(fireworkMeta);
+
+            location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2, 1);
+
+            Bukkit.getScheduler().scheduleSyncDelayedTask(CreeperConfetti.getInstance(), () -> firework.detonate(), 1);
         }
     }
 }
